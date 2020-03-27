@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/publications/add").fullyAuthenticated()
                 .antMatchers("/publications/other").fullyAuthenticated()
                 .antMatchers("/publications/").fullyAuthenticated()
-                .antMatchers("/publications").permitAll();
+                .antMatchers("/publications/delete/*").fullyAuthenticated();
         ;
 
         // Правило 2: Разрешить всё остальные запросы

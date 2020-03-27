@@ -43,4 +43,9 @@ public class PublicationController {
     public String addPublicationForUser(@RequestParam String image, @RequestParam String descr) {
         return publicationService.addPublication(image, descr);
     }
+
+    @DeleteMapping("/delete/{publicationId}")
+    public String deleteUserPublication(@PathVariable("publicationId") String publicationId) {
+        return publicationService.deletePublication(publicationId);
+    }
 }

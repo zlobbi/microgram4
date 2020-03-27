@@ -51,10 +51,23 @@ public class PublicationService {
         return "Publication added";
     }
 
+    public String deletePublication(String publicationId) {
+        String msg = "";
+        User u = getUser();
+        if(publicationRepo.existsByIdAndUserId(publicationId, u)) {
+            publicationRepo.deleteById(publicationId);
+            msg = "publication deleted " + publicationId;
+            u.minusPublication();
+            userRepo.save(u);
+        } else {
+            msg = "it's not your publication";
+        }
+        return msg;
+    }
+
     public User getUser() {
         // get current authenticated user
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return userRepo.findByUsername(auth.getName()).get();
     }
-
 }

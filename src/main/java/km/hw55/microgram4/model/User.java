@@ -63,6 +63,8 @@ public class User implements UserDetails {
     // Publications actions -----------------------------
     public void plusPublication() { this.publicationsCount++; }
 
+    public void minusPublication() { this.publicationsCount--;}
+
     public int getPublicationsCoutn() { return this.publicationsCount; }
 
     // Subscribtions actions -----------------------------
